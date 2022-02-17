@@ -16,7 +16,7 @@ MongoClient.connect('mongodb+srv://zain:Pakistan2@cluster0.e2ql2.mongodb.net/myF
     db = client.db('programs')
 })
 
-
+app.use(express.static('.'))
 // dispaly a message for root path to show that API is working
 app.get('/', (req, res, next) => {
     res.send('Select a collection, e.g., /collection/messages')
@@ -40,8 +40,10 @@ app.get('/collection/:collectionName', (req, res, next) => {
 //adding post
 app.post('/collection/:collectionName', (req, res, next) => {
 req.collection.insert(req.body, (e, results) => {
+    console.log({results})
+
 if (e) return next(e)
-res.send(results.ops)
+res.send(results)
 })
 })
 
