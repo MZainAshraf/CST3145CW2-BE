@@ -95,3 +95,8 @@ res.send((result.result.n === 1) ?
 
 const port = process.env.PORT || 3000
 app.listen(port)
+
+
+app.listen(80, function () {
+  console.log('CORS-enabled web server listening on port 80')
+})
